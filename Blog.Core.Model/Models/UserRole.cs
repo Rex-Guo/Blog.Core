@@ -1,20 +1,16 @@
 ﻿using SqlSugar;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Core.Model.Models
 {
     /// <summary>
     /// 用户跟角色关联表
     /// </summary>
-    public class UserRole : RootEntity
+    public class UserRole : UserRoleRoot<long>
     {
         public UserRole() { }
 
-        public UserRole(int uid, int rid)
+        public UserRole(long uid, long rid)
         {
             UserId = uid;
             RoleId = rid;
@@ -25,25 +21,17 @@ namespace Blog.Core.Model.Models
         }
 
 
-
         /// <summary>
         ///获取或设置是否禁用，逻辑上的删除，非物理删除
         /// </summary>
         [SugarColumn(IsNullable = true)]
         public bool? IsDeleted { get; set; }
-        /// <summary>
-        /// 用户ID
-        /// </summary>
-        public int UserId { get; set; }
-        /// <summary>
-        /// 角色ID
-        /// </summary>
-        public int RoleId { get; set; }
+       
         /// <summary>
         /// 创建ID
         /// </summary>
         [SugarColumn(IsNullable = true)]
-        public int? CreateId { get; set; }
+        public long? CreateId { get; set; }
         /// <summary>
         /// 创建者
         /// </summary>

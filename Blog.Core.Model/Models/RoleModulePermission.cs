@@ -6,7 +6,7 @@ namespace Blog.Core.Model.Models
     /// <summary>
     /// 按钮跟权限关联表
     /// </summary>
-    public class RoleModulePermission : RootEntity
+    public class RoleModulePermission : RoleModulePermissionRoot<long>
     {
         public RoleModulePermission()
         {
@@ -21,24 +21,12 @@ namespace Blog.Core.Model.Models
         /// </summary>
         [SugarColumn(IsNullable = true)]
         public bool? IsDeleted { get; set; }
-        /// <summary>
-        /// 角色ID
-        /// </summary>
-        public int RoleId { get; set; }
-        /// <summary>
-        /// 菜单ID
-        /// </summary>
-        public int ModuleId { get; set; }
-        /// <summary>
-        /// 按钮ID
-        /// </summary>
-        [SugarColumn(IsNullable = true)]
-        public int? PermissionId { get; set; }
+       
         /// <summary>
         /// 创建ID
         /// </summary>
         [SugarColumn(IsNullable = true)]
-        public int? CreateId { get; set; }
+        public long? CreateId { get; set; }
         /// <summary>
         /// 创建者
         /// </summary>
@@ -53,7 +41,7 @@ namespace Blog.Core.Model.Models
         /// 修改ID
         /// </summary>
         [SugarColumn(IsNullable = true)]
-        public int? ModifyId { get; set; }
+        public long? ModifyId { get; set; }
         /// <summary>
         /// 修改者
         /// </summary>
@@ -69,7 +57,7 @@ namespace Blog.Core.Model.Models
         [SugarColumn(IsIgnore = true)]
         public Role Role { get; set; }
         [SugarColumn(IsIgnore = true)]
-        public Module Module { get; set; }
+        public Modules Module { get; set; }
         [SugarColumn(IsIgnore = true)]
         public Permission Permission { get; set; }
     }

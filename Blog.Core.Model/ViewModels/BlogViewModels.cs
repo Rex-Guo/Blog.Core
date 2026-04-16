@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Core.Model.ViewModels
 {
@@ -14,7 +10,7 @@ namespace Blog.Core.Model.ViewModels
         /// <summary>
         /// 
         /// </summary>
-        public int bID { get; set; }
+        public long bID { get; set; }
         /// <summary>创建人
         /// 
         /// </summary>
@@ -38,7 +34,7 @@ namespace Blog.Core.Model.ViewModels
         /// <summary>
         /// 上一篇id
         /// </summary>
-        public int previousID { get; set; }
+        public long previousID { get; set; }
 
         /// <summary>
         /// 下一篇
@@ -48,7 +44,7 @@ namespace Blog.Core.Model.ViewModels
         /// <summary>
         /// 下一篇id
         /// </summary>
-        public int nextID { get; set; }
+        public long nextID { get; set; }
 
         /// <summary>类别
         /// 

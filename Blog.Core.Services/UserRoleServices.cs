@@ -1,32 +1,25 @@
-using Blog.Core.IServices;
-using Blog.Core.FrameWork.IRepository;
-using Blog.Core.Services.BASE;
-using Blog.Core.Model.Models;
-using System.Threading.Tasks;
-using System.Linq;
 using Blog.Core.Common;
+using Blog.Core.IRepository.Base;
+using Blog.Core.IServices;
+using Blog.Core.Model.Models;
+using Blog.Core.Services.BASE;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Blog.Core.Services
-{	
-	/// <summary>
-	/// UserRoleServices
-	/// </summary>	
-	public class UserRoleServices : BaseServices<UserRole>, IUserRoleServices
+{
+    /// <summary>
+    /// UserRoleServices
+    /// </summary>	
+    public class UserRoleServices : BaseServices<UserRole>, IUserRoleServices
     {
-	
-        IUserRoleRepository _dal;
-        public UserRoleServices(IUserRoleRepository dal)
-        {
-            this._dal = dal;
-            base.BaseDal = dal;
-        }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="uid"></param>
         /// <param name="rid"></param>
         /// <returns></returns>
-        public async Task<UserRole> SaveUserRole(int uid, int rid)
+        public async Task<UserRole> SaveUserRole(long uid, long rid)
         {
             UserRole userRole = new UserRole(uid, rid);
 
@@ -49,7 +42,7 @@ namespace Blog.Core.Services
 
 
         [Caching(AbsoluteExpiration = 30)]
-        public async Task<int> GetRoleIdByUid(int uid)
+        public async Task<int> GetRoleIdByUid(long uid)
         {
             return ((await base.Query(d => d.UserId == uid)).OrderByDescending(d => d.Id).LastOrDefault()?.RoleId).ObjToInt();
         }
